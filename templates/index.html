@@ -7,8 +7,13 @@
     <title>Nyhetssida</title>
 </head>
 <body>
-    <h1>Välkommen till Nyhetssidan</h1>
-    <a href="{{ url_for('login') }}">Logga in</a> | <a href="{{ url_for('register') }}">Registrera dig</a>
+    <header>
+        <h1>Nyhetssidan</h1>
+        <div>
+            <a href="{{ url_for('login') }}">Logga in</a>
+            <a href="{{ url_for('register') }}">Registrera dig</a>
+        </div>
+    </header>
     <h2>Nyheter</h2>
     <ul>
         {% for news in news %}
