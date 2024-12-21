@@ -57,6 +57,21 @@ def login():
         flash('Felaktigt användarnamn eller lösenord.')
     return render_template('login.html')
 
+@app.route('/post', methods=['GET', 'POST'])
+@login_required
+def post():
+    if request.method == 'POST':
+        title = request.form['title']
+        subtitle = request.form['subtitle']
+        content = request.form['content']
+        new_news = News(title=title, content=content)
+        db.session.add(new_news)
+        db.session.commit()
+        flash('Nyheten har publicerats!')
+        return redirect(url_for('home'))
+    return render_template('post.html')
+
+
 @app.route('/logout')
 @login_required
 def logout():
